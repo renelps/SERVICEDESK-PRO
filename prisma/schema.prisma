@@ -22,7 +22,12 @@ model Customer {
   address String?
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
-} 
+
+  userId String? @db.ObjectId
+  User User? @relation(fields: [userId], references: [id])
+
+  tickets Ticket[]
+}
 
 model Ticket {
   id String @id @default(auto()) @map("_id") @db.ObjectId
@@ -31,6 +36,12 @@ model Ticket {
   status String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
+
+  customerId String? @db.ObjectId
+  customer Customer? @relation(fields: [customerId], references: [id])
+
+  userId String? @db.ObjectId
+  User User? @relation(fields: [userId], references: [id])
 }
 
 model Account {
@@ -73,6 +84,10 @@ model User {
   sessions      Session[]
  
   @@map("users")
+
+  tickets Ticket[]
+
+  customs Customer[]
 }
  
 model VerificationToken {
