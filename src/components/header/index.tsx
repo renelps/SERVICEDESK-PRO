@@ -32,7 +32,7 @@ export function Header(){
         </Link>
 
         {status === "loading" && (
-          <button className="cursor-pointer animate-spin" >
+          <button className="cursor-pointer animate-spin">
             <FiLoader size={26} color="#4b5563"/>
           </button>
         )}
@@ -48,14 +48,11 @@ export function Header(){
             <Link href="/dashboard">
               <FiUser size={26} color="#4b5563" />
             </Link>
-            <button onClick={handleSignOut}>
-              <Link href="/login">
-                <FiLogOut size={26} color="#4b5563" />
-              </Link>
+            <button onClick={handleSignOut} className="cursor-pointer">
+              <FiLogOut size={26} color="#4b5563" />
             </button>
           </div>
         )}
-
 
       </div>
     </header>
