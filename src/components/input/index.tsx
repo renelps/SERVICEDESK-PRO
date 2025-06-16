@@ -10,7 +10,7 @@ import {
 interface InputProps<T extends FieldValues> {
   type: string;
   name: Path<T>;
-  id: string;
+  id?: string;
   placeholder?: string;
   error?: string;
   register: UseFormRegister<T>;
