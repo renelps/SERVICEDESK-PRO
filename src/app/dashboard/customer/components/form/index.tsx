@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/input";
 import { api } from "@/lib/api";
+import { useRouter } from "next/navigation"
 
 const schema = z.object({
   name: z.string().min(1, "O campo nome é obrigatório"),
@@ -22,6 +23,7 @@ type FormData = z.infer<typeof schema>
 
 export function NewCustomerForm({ userId }: { userId: string }){
   
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema)
   })
@@ -29,15 +31,16 @@ export function NewCustomerForm({ userId }: { userId: string }){
   
   async function handleRegisterCustomer(data: FormData ){
     
-    const response = await api.post("/api/customer", {
+    await api.post("/api/customer", {
       name: data.name,
       email: data.email,
       phone: data.phone,
+      address: data.address,
       userId: userId
-
     })
 
-    console.log(response.data)
+    router.refresh();
+    router.replace("/dashboard/customer");
 
   }
 
