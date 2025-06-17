@@ -22,12 +22,12 @@ export function Header(){
     <header className="w-full flex items-center justify-center px-2 h-20 py-4 shadow-sm">
       <div className="w-full flex items-center justify-between max-w-7xl">
         <Link href="/">
-          <h1 className="font-bold text-2xl pl-1 hover:tracking-widest duration-300">
-            <span className="text-blue-500 pr-1">
-              DEV
+          <h1 className="font-bold text-2xl pl-1 hover:tracking-widest duration-300 text-blue-500">
+            <span className="pr-1">
+              SERVICEDESK
             </span> 
   
-            CONTROLE
+            PRO
           </h1>
         </Link>
 
@@ -44,7 +44,7 @@ export function Header(){
         )}
 
         {status === "authenticated" && (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <Link href="/dashboard">
               <FiUser size={26} color="#4b5563" />
             </Link>
